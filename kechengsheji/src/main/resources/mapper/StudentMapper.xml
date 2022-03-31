@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.wj_kechengsheji.mapper.StudentMapper">
+    <insert id="addStudent">
+        insert into wj.student values (#{id},#{name},#{age},#{address}) ;
+    </insert>
+    <select id="findAll" resultType="com.example.wj_kechengsheji.pojo.Student">
+        select * from wj.student ;
+    </select>
+    <select id="findCourse" resultType="com.example.wj_kechengsheji.pojo.TableData" parameterType="int">
+        select wj.course.name as name , wj.grade.pingshi as pingshi , wj.grade.qizhong as qizhong ,
+               wj.grade.shixi as shixi , wj.grade.qimo as qimo , wj.grade.zongping as zongping
+        from wj.grade , wj.student , wj.course
+        where grade.sid = student.id and grade.cid = course.id and student.id = #{id} ;
+    </select>
+</mapper>

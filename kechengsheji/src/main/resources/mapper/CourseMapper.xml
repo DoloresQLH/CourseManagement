@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.wj_kechengsheji.mapper.CourseMapper">
+    <select id="getGradeByCourseId" parameterType="int" resultType="com.example.wj_kechengsheji.pojo.CourseTableData">
+        select wj.student.name as name , wj.grade.pingshi as pingshi , wj.grade.qizhong as qizhong ,
+               wj.grade.shixi as shixi , wj.grade.qimo as qimo , wj.grade.zongping as zongping
+        from wj.grade , wj.student , wj.course
+        where grade.sid = student.id and grade.cid = course.id and course.id = #{id};
+    </select>
+    <select id="getGradeByFenShuDuan" parameterType="hashmap" resultType="com.example.wj_kechengsheji.pojo.CourseTableData">
+        select wj.student.name as name , wj.grade.pingshi as pingshi , wj.grade.qizhong as qizhong ,
+               wj.grade.shixi as shixi , wj.grade.qimo as qimo , wj.grade.zongping as zongping
+        from wj.grade , wj.student , wj.course
+        where grade.sid = student.id and grade.cid = course.id and course.id = #{id} and zongping >= #{a} and
+              zongping &lt;= #{b};
+    </select>
+</mapper>

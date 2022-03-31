@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.wj_kechengsheji.mapper.GradeMapper">
+    <insert id="addGrade" parameterType="com.example.wj_kechengsheji.pojo.Grade">
+        insert into wj.grade values (#{sid},#{cid},#{pingshi},#{qizhong},#{shixi},#{qimo},#{zongping}) ;
+    </insert>
+</mapper>
